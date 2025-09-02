@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import { Search, MapPin, Users, Building2, Award, Phone } from 'lucide-react';
+import React from 'react';
 import HeroSection from '../components/HeroSection';
 import QuickActionCards from '../components/QuickActionCards';
 import InteractiveMap from '../components/InteractiveMap';

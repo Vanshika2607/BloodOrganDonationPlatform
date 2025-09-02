@@ -10,7 +10,7 @@ const HeroSection: React.FC = () => {
 
   const bloodGroups = ['A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-'];
 
-  const { listen, listening, stop } = useSpeechRecognition({
+  const { listen, stop } = useSpeechRecognition({
     onResult: (result: string) => {
       const lowerResult = result.toLowerCase();
       
@@ -54,7 +54,7 @@ const HeroSection: React.FC = () => {
     setIsListening(false);
   };
   return (
-    <section className="relative bg-gradient-to-br from-red-600 via-red-700 to-red-800 text-white py-20 overflow-hidden">
+    <section className="relative bg-gradient-to-b from-red-600 via-red-700 to-white text-white py-20 overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-10">
         <motion.div 
