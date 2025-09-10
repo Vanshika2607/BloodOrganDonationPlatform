@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donate Blood - Save Lives</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: #333;
+            line-height: 1.6;
+            background: linear-gradient(135deg, #f9f9f9 0%, #fff5f5 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(to right, #d32f2f, #b71c1c);
+            color: white;
+            padding: 15px 0;
+            box-shadow: 0 4px 12px rgba(183, 28, 28, 0.2);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logo i {
+            font-size: 2.5rem;
+            color: white;
+        }
+        
+        .logo-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 800;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            padding: 5px 10px;
+            border-radius: 4px;
+        }
+        
+        nav a:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%23f8f9fa"/><path d="M0,0 L100,100" stroke="%23ffebee" stroke-width="2"/></svg>');
+            padding: 80px 0;
+            text-align: center;
+            margin: 40px 0;
+            border-radius: 12px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.9);
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.2rem;
+            color: #d32f2f;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            color: #555;
+            margin-bottom: 30px;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: #d32f2f;
+            color: white;
+            padding: 15px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(211, 47, 47, 0.4);
+        }
+        
+        .cta-button:hover {
+            background: #b71c1c;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(183, 28, 28, 0.5);
+        }
+        
+        /* Stats Section */
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin: 60px 0;
+        }
+        
+        .stat-box {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            flex: 1;
+            min-width: 200px;
+            border-top: 5px solid #d32f2f;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #d32f2f;
+            margin-bottom: 10px;
+        }
+        
+        .stat-text {
+            color: #666;
+            font-weight: 500;
+        }
+        
+        /* Donation Options */
+        .donation-options {
+            margin: 60px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: #d32f2f;
+            margin-bottom: 50px;
+        }
+        
+        .options {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .option-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            width: 300px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
+        }
+        
+        .option-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .option-header {
+            background: #d32f2f;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .option-body {
+            padding: 25px;
+        }
+        
+        .option-body ul {
+            list-style: none;
+            margin: 20px 0;
+        }
+        
+        .option-body li {
+            margin-bottom: 12px;
+            padding-left: 25px;
+            position: relative;
+        }
+        
+        .option-body li:before {
+            content: "✓";
+            color: #d32f2f;
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+        
+        .option-button {
+            display: block;
+            background: #d32f2f;
+            color: white;
+            text-align: center;
+            padding: 12px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 20px;
+            transition: all 0.3s;
+        }
+        
+        .option-button:hover {
+            background: #b71c1c;
+        }
+        
+        /* Impact Section */
+        .impact {
+            background: white;
+            padding: 60px 0;
+            margin: 60px 0;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        }
+        
+        .impact-content {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .impact-content p {
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+        }
+        
+        /* Footer */
+        footer {
+            background: linear-gradient(to right, #333, #222);
+            color: white;
+            padding: 50px 0 20px;
+            margin-top: 60px;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            justify-content: space-between;
+            margin-bottom: 30px;
+        }
+        
+        .footer-column {
+            flex: 1;
+            min-width: 250px;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: #d32f2f;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-column a {
+            color: #ddd;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .footer-column a:hover {
+            color: #d32f2f;
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-icons a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background: #444;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            color: white;
+            transition: all 0.3s;
+        }
+        
+        .social-icons a:hover {
+            background: #d32f2f;
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #444;
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 20px;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .stats {
+                flex-direction: column;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-tint"></i>
+                    <div class="logo-text">LifeFlow</div>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Donate</a></li>
+                        <li><a href="#">Impact</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Your Blood Can Save Lives</h1>
+                <p>Join thousands of donors who are making a difference in their communities. Every donation can save up to three lives. Schedule your donation today and become a hero in someone's story.</p>
+                <a href="#" class="cta-button">Donate Now</a>
+            </div>
+        </section>
+
+        <!-- Stats Section -->
+        <section class="stats">
+            <div class="stat-box">
+                <div class="stat-number">5,000+</div>
+                <div class="stat-text">Lives Saved This Year</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">12,000+</div>
+                <div class="stat-text">Regular Donors</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">25</div>
+                <div class="stat-text">Cities Served</div>
+            </div>
+        </section>
+
+        <!-- Donation Options -->
+        <section class="donation-options">
+            <h2 class="section-title">Ways to Donate</h2>
+            <div class="options">
+                <div class="option-card">
+                    <div class="option-header">
+                        <h3>Whole Blood</h3>
+                    </div>
+                    <div class="option-body">
+                        <p>The most common type of donation where approximately one pint of blood is drawn.</p>
+                        <ul>
+                            <li>Duration: 45-60 minutes</li>
+                            <li>Can donate every 56 days</li>
+                            <li>Most flexible donation type</li>
+                        </ul>
+                        <a href="#" class="option-button">Learn More</a>
+                    </div>
+                </div>
+                
+                <div class="option-card">
+                    <div class="option-header">
+                        <h3>Power Red</h3>
+                    </div>
+                    <div class="option-body">
+                        <p>A donation that collects concentrated red blood cells using apheresis technology.</p>
+                        <ul>
+                            <li>Duration: 1.5 hours</li>
+                            <li>Can donate every 112 days</li>
+                            <li>Ideal for O-, O+, A-, B- donors</li>
+                        </ul>
+                        <a href="#" class="option-button">Learn More</a>
+                    </div>
+                </div>
+                
+                <div class="option-card">
+                    <div class="option-header">
+                        <h3>Plasma</h3>
+                    </div>
+                    <div class="option-body">
+                        <p>Plasma donation through apheresis collects the liquid portion of your blood.</p>
+                        <ul>
+                            <li>Duration: 1.5 hours</li>
+                            <li>Can donate every 28 days</li>
+                            <li>AB plasma is most needed</li>
+                        </ul>
+                        <a href="#" class="option-button">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Impact Section -->
+        <section class="impact">
+            <div class="impact-content">
+                <h2 class="section-title">Your Impact</h2>
+                <p>When you donate blood, you're not just giving a resource—you're giving time. Time for a patient to recover, time for families to make memories, and time for medical teams to provide life-saving treatments.</p>
+                <p>Every two seconds, someone in the world needs blood. Your donation helps ensure that blood is available when it's needed most.</p>
+                <a href="#" class="cta-button">Find a Donation Center</a>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>LifeFlow</h3>
+                    <p>Dedicated to saving lives through blood donation and raising awareness about the constant need for blood.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#">Eligibility Requirements</a></li>
+                        <li><a href="#">Donation Process</a></li>
+                        <li><a href="#">Blood Facts</a></li>
+                        <li><a href="#">Host a Blood Drive</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Life Avenue, Health City</li>
+                        <li><i class="fas fa-phone"></i> (555) 123-LIFE</li>
+                        <li><i class="fas fa-envelope"></i> info@lifeflow.org</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 LifeFlow Blood Donation Initiative. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

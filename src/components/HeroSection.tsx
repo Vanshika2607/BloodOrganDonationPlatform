@@ -82,8 +82,8 @@ const HeroSection: React.FC = () => {
           transition={{ duration: 0.8 }}
         >
           <h1 className="text-4xl md:text-6xl font-bold mb-6 animate-fade-in">
-            Save Lives with
-            <span className="block text-emerald-400">BloodLink</span>
+            Save someone's Life with
+            <span className="block text-emerald-400">LifeStream_India</span>
           </h1>
           <p className="text-xl md:text-2xl text-red-100 mb-8 max-w-3xl mx-auto">
             Connect donors, hospitals, and patients across India. Find blood and organs when every second counts.

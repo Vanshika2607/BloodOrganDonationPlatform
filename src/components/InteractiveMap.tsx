@@ -1,9 +1,19 @@
 import React, { useState } from 'react';
-import { MapPin, Droplets, Activity } from 'lucide-react';
+import { MapPin, Activity } from 'lucide-react';
 import { mockData } from '../data/mockData';
 
+type Hospital = {
+  id: string;
+  name: string;
+  location: string;
+  bloodStock: Record<string, number>;
+  // Add other fields if needed
+  // Add coordinates for pin placement
+  coordinates: { x: number; y: number }; // x and y are percentages (0-100)
+};
+
 const InteractiveMap: React.FC = () => {
-  const [selectedHospital, setSelectedHospital] = useState<any>(null);
+  const [selectedHospital, setSelectedHospital] = useState<Hospital | null>(null);
 
   return (
     <section className="py-16 bg-white">
@@ -26,19 +36,25 @@ const InteractiveMap: React.FC = () => {
               <p className="text-sm">Click on hospital pins to view availability</p>
             </div>
 
-            {/* Hospital Pins (Simplified representation) */}
-            <div className="absolute inset-0 p-8">
-              {mockData.hospitals.slice(0, 6).map((hospital, index) => (
+            {/* India SVG Map */}
+            <div className="relative w-full h-96">
+              <img
+                src="/india-map.svg"
+                alt="India Map"
+                className="w-full h-full object-contain"
+                style={{ pointerEvents: 'none' }}
+              />
+              {/* Hospital Pins */}
+              {mockData.hospitals.slice(0, 6).map((hospital) => (
                 <button
                   key={hospital.id}
-                  onClick={() => setSelectedHospital(hospital)}
-                  className={`absolute bg-red-500 hover:bg-red-600 text-white p-2 rounded-full shadow-lg transform hover:scale-110 transition-all duration-200 ${
-                    index % 2 === 0 ? 'animate-pulse' : ''
-                  }`}
+                  onClick={() => setSelectedHospital({ ...hospital, id: String(hospital.id) })}
+                  className="absolute bg-red-500 hover:bg-red-600 text-white p-2 rounded-full shadow-lg transform hover:scale-110 transition-all duration-200"
                   style={{
-                    top: `${20 + (index * 12)}%`,
-                    left: `${15 + (index * 15)}%`,
+                    top: `${hospital.coordinates.y}%`,
+                    left: `${hospital.coordinates.x}%`,
                   }}
+                  title={hospital.name}
                 >
                   <MapPin className="h-4 w-4" fill="white" />
                 </button>
@@ -49,14 +65,12 @@ const InteractiveMap: React.FC = () => {
           {/* Hospital Details */}
           <div className="bg-gray-50 rounded-2xl p-6">
             <h3 className="text-xl font-semibold text-gray-900 mb-4">Hospital Details</h3>
-            
             {selectedHospital ? (
               <div className="space-y-4">
                 <div>
                   <h4 className="font-semibold text-gray-900">{selectedHospital.name}</h4>
                   <p className="text-gray-600 text-sm">{selectedHospital.location}</p>
                 </div>
-
                 <div className="space-y-3">
                   <h5 className="font-medium text-gray-800">Blood Availability</h5>
                   <div className="grid grid-cols-2 gap-2">
@@ -78,7 +92,6 @@ const InteractiveMap: React.FC = () => {
                     ))}
                   </div>
                 </div>
-
                 <div className="pt-4 border-t">
                   <p className="text-sm text-gray-600 mb-2">
                     <Activity className="h-4 w-4 inline mr-1" />
@@ -103,3 +116,4 @@ const InteractiveMap: React.FC = () => {
 };
 
 export default InteractiveMap;
+// Note: Ensure each hospital in mockData.hospitals has a `coordinates` property like { x: 50, y: 30 }

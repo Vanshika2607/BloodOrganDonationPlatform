@@ -38,7 +38,7 @@ const Navigation: React.FC = () => {
               <Heart className="h-6 w-6 text-white" fill="white" />
             </motion.div>
             <div className="flex flex-col">
-              <span className="text-xl font-semibold text-gray-900">BloodLink</span>
+              <span className="text-xl font-semibold text-gray-900">LifeStream_India</span>
               <span className="text-xs text-gray-600 hidden sm:block">National Tracker</span>
             </div>
           </Link>

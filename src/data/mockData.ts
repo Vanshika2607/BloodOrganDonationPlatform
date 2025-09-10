@@ -16,6 +16,7 @@ export const mockData = {
       },
       verified: true,
       contact: '+91-11-26588500',
+      coordinates: { x: 60, y: 20 }, // Delhi
     },
     {
       id: 2,
@@ -33,6 +34,7 @@ export const mockData = {
       },
       verified: true,
       contact: '+91-80-26304050',
+      coordinates: { x: 40, y: 80 }, // Bengaluru
     },
     {
       id: 3,
@@ -50,6 +52,7 @@ export const mockData = {
       },
       verified: true,
       contact: '+91-22-66754444',
+      coordinates: { x: 20, y: 70 }, // Mumbai
     },
     {
       id: 4,
@@ -67,6 +70,7 @@ export const mockData = {
       },
       verified: true,
       contact: '+91-124-4141414',
+      coordinates: { x: 55, y: 25 }, // Gurugram
     },
     {
       id: 5,
@@ -84,6 +88,7 @@ export const mockData = {
       },
       verified: true,
       contact: '+91-416-228-1000',
+      coordinates: { x: 75, y: 85 }, // Vellore
     },
     {
       id: 6,
@@ -101,6 +106,7 @@ export const mockData = {
       },
       verified: true,
       contact: '+91-172-2747585',
+      coordinates: { x: 50, y: 15 }, // Chandigarh
     },
   ],
   donors: [
